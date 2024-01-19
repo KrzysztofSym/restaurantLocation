@@ -8,16 +8,16 @@
     --h3-fs: 1.3rem;  --h3-fs-media: 1.8rem;
     --h4-fs: 1.1rem;  --h4-fs-media: 1.5rem;
     --p-fs: .7rem;    --p-fs-media: 1.1rem;
-    --a-fs: .7rem;    --a-fs-media: 1.1rem;
-    --li-fs: .7rem;   --li-fs-media: 1.1rem;    
+    --sm-fs: .65rem;    --a-fs-media: 1.1rem;
+    --lg-fs: 1rem;   --li-fs-media: 1.1rem;    
 
-    --clr-bg-main: #ddf1f1;
-    --clr-bg-pri: #a9e5e7;
-    --clr-bg-sec: #f3fafa;
-    --clr-acc-main: #00bea6;
-    --clr-acc-pri: #009885;
-    --clr-acc-sec: #33cbb8;
-    --clr-acc-thi: #d80000;
+    --clr-bg-main: #e7f4eb;
+    --clr-bg-pri: #dd6e51;
+    --clr-bg-sec: #f48266;
+    --clr-acc-main: #f8b4a3;
+    --clr-acc-pri: #fdef74;
+    --clr-acc-sec: #58d861;
+    --clr-acc-thi: #74b6f3;
     --clr-acc-four: #ad0000;
     --clr-acc-fif: #e03333;
     --clr-text-main: #67696a;
@@ -118,42 +118,84 @@ body {
 
 .container {
     min-height: 300px;
-
+    margin: 1rem;
     width: 400px;
-    padding: 1rem;
-   
-    background-color: #fff;
+    background-color: var(--clr-bg-pri);
     position: relative;
     animation: scaleUp 1s ease-in-out;
     transform-origin: center center;
-    box-shadow: 0px 8px 30px -10px var(--clr-acc-sec);
+    box-shadow: 0px 8px 30px -10px var(--clr-acc-fif);
     animation: scaleUp 1s ease-in-out;
     transform-origin: center center;
-    /* overflow: hidden; */
+    border-radius: 30px;
+    overflow: hidden;
 }
 
 header {
-    position: fixed;
+    display: flex;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--h4-fs);
+    color: var(--clr-acc-main);
+}
+
+header h3 {
+    color: #fff;
+    font-weight: 300;
+    font-size: var(--lg-fs);
+}
+
+header i {
+    font-size: var(--h2-fs);
+    cursor: pointer;
 }
 
 
 .products {
+    position: relative;
     overflow-y: scroll;
     height: 30rem;
-    margin-top: 4rem;
+    transition: 1s;
+
 }
 
 .products::-webkit-scrollbar {
     display: none;
   }
 
-.item {
+.meal {
     display: flex;
-    padding: .5rem;
+    width: 100%;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+
+}
+
+.item {
+    
+    background-color: var(--clr-bg-sec);
+    margin-bottom: 2px;
+    position: inherit;
+    overflow-x: hidden;
+}
+
+
+.item:last-child {
+    margin-bottom: 0;
 }
 
 .name {
     margin: 0 1rem;
+}
+
+.name h4 {
+    font-size: var(--lg-fs);
+    color: #fff;
 }
 
 .picture img {
@@ -165,9 +207,25 @@ header {
     
 }
 
+.direction {
+   margin-left: auto;
+   text-align: center;
+   color: #fff;
+}
+
+.direction span {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.direction p {
+    font-size: var(--lg-fs);
+}
+
 [data-star] {
     text-align: left;
     font-style: normal;
+    font-size: 1rem;
     display: inline-block;
     position: relative;
     unicode-bidi: bidi-override;
@@ -176,7 +234,7 @@ header {
 [data-star]::before {
     display: block;
     content: '★★★★★';
-    color: #ddd;
+    color: var(--clr-bg-pri);
 }
 
 [data-star]::after {
@@ -186,10 +244,11 @@ header {
     left: 0;
     content: '★★★★★';
     width: 0;
-    color: #ff8c00;
+    color: var(--clr-acc-pri);
     overflow: hidden;
     height: 100%;
 }
+
 
 [data-star^="5.0"]::after{width: calc(5/5*100%)}
 [data-star^="4.5"]::after{width: calc(4.5/5*100%)}
@@ -201,9 +260,53 @@ header {
     display: flex;
 }
 
-.item p {
+.tag > p {
     font-size: var(--p-fs);
     border: 1px solid #fff;
-    border-radius: 100wv;
-    margin: .3rem;
+    border-radius: 100vw;
+    color: #fff;
+    padding: 0 .5rem;
+    margin: .1rem;
+}
+
+
+.meal.active {
+    transform: translateX(-12rem);
+
+}
+
+.bookmark {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    width: 12rem;
+    right: -12rem;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: .5s ease-in-out;
+}
+
+.bookmark div {
+    font-size: var(--lg-fs);
+    text-align: center;
+    cursor: pointer;
+}
+
+.bookmark div i {
+    font-size: var(--h2-fs);
+}
+
+.phone i {
+    color: var(--clr-acc-sec);
+}
+
+.tags i {
+    color: var(--clr-acc-thi);
+}
+
+
+.bookmark.active {
+    transform: translateX(-12rem);
 }
